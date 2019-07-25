@@ -10,9 +10,10 @@
 
 // Reflect.get() takes 2 properties
 // 1. target, 2.property
+// Reflect.get(target, propertyKey[, receiver])
 
 const x = {
-    a:1, b:2
+    a: 1, b: 2
 }
 
 console.log(Reflect.get(x, `a`));
@@ -20,7 +21,7 @@ console.log(x[`a`]);
 
 const arr = ["joe", "akash", "mary"];
 console.log(arr[0])
-console.log(Reflect.get(arr,0));
+console.log(Reflect.get(arr, 0));
 
 
 const monster1 = {
@@ -51,9 +52,13 @@ console.log(proxy1.secret);
 
 // ---------------- reflect.has
 // works as hasownproperty and in
+// Reflect.has(target, propertyKey)
+// The target object in which to look for the property.
+// The name of the property to check.
+// Return Value: A Boolean indicating whether or not the target has the property.
 
 const obj = {
-    number : 22
+    number: 22
 }
 
 console.log(obj.hasOwnProperty('number'));
@@ -61,8 +66,9 @@ console.log('number' in obj);
 console.log(Reflect.has(obj, 'number'));
 
 // ---------------reflect.apply
+// Reflect.apply(target, thisArgument, argumentsList)
 function sum(...array) {
-    return array.reduce((number, total)=> {
+    return array.reduce((number, total) => {
         return number + total;
     })
 }
@@ -71,9 +77,9 @@ function sum(...array) {
 //     throw new Error('I broke apply function!');
 // }
 
-console.log(sum[1,2,3]);
-console.log(sum.apply(null, [1,2,3]));
-console.log(Function.apply.call(sum, null, [1,2,3]));
+console.log(sum[1, 2, 3]);
+console.log(sum.apply(null, [1, 2, 3]));
+console.log(Function.apply.call(sum, null, [1, 2, 3]));
 console.log(Reflect.apply(sum, null, [1, 2, 3]));
 
 // if proxy provides traps to change objects, Reflect provides introspection to get data about objects
