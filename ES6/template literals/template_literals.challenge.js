@@ -19,19 +19,14 @@ let personData = [
         age: 21
     }
 ]
-function calculateDiscount(person) {
-    let discounts;
-    discounts = person.map(function (currentValue) {
-        if (currentValue.registered == true)
-            return `Discount for ${currentValue.name} is 5%`;
-        else
-            return `Discount for ${currentValue.name} is 4%`;
+
+function returnDiscount(fname) {
+    let discount = personData.filter(function (currentValue) {
+        return fname[0] === currentValue.name;
     });
-    return discounts;
-}
-function returnDiscount(strings, func) {
-    return func(personData);
+    return discount[0].registered ? `The discount for ${discount[0].name} is 5` :
+        `The discount for ${discount[0].name} is 4`;
 }
 
-const discount = returnDiscount`${() => calculateDiscount(personData)}`;
-console.log(discount.join("\n"));
+console.log(returnDiscount`Dhruv`);
+console.log(returnDiscount`Rajdeep`);
