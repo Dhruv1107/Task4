@@ -21,11 +21,8 @@ let personData = [
 ]
 
 function returnDiscount(fname) {
-    let discount = personData.filter(function (currentValue) {
-        return fname[0] === currentValue.name;
-    });
-    return discount[0].registered ? `The discount for ${discount[0].name} is 5` :
-        `The discount for ${discount[0].name} is 4`;
+    let discount = personData.filter(currentValue => fname[0] === currentValue.name);
+    return `The discount for ${discount[0].name} is ${discount[0].registered ? 5 : 4}`;
 }
 
 console.log(returnDiscount`Dhruv`);

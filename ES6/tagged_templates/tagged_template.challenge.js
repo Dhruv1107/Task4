@@ -18,13 +18,12 @@ let order = `asc`
 // your output should be - SELECT * FROM USERS WHERE uid = 3 OR city = chicago ORDER BY asc
 // Spread syntax is a more common and easy here if you are comfortable with it
 function checkQuery(static, ...dynamic) {
-    console.log(static);
-    console.log(dynamic);
+    // console.log(static);
+    // console.log(dynamic);
     let finalQuery;
     if ((dynamic[0].startsWith("SELECT") || dynamic[0].startsWith("UPDATE")) &&
         !(dynamic[0].search("UPDATE") && dynamic[1] === "PASSWORDS")) {
-        finalQuery = dynamic[0] + static[1] + dynamic[1] + static[2] + dynamic[2]
-            + static[3] + dynamic[3];
+        finalQuery = `${dynamic[0]} ${static[1]} ${dynamic[1]} ${static[2]} ${dynamic[2]} ${static[3]} ${dynamic[3]}`;
         //Your validation code here...
         return (finalQuery);
     }
